@@ -1,0 +1,92 @@
+--1. 1-100 diapazonunda olan cüt r?q?ml?ri ekrana çixarin
+
+DECLARE @counter int =1
+WHILE @counter<100
+BEGIN
+    IF @counter % 2 = 0
+        PRINT @counter
+
+    SET @counter = @counter + 1
+END
+
+--2. Authorlarin sayini Authors adli d?yis?nd? saxlayin, daha sonra bu d?yis?ni 5? vuraraq
+--ekrana çixarin
+
+DECLARE @Authors int=22
+PRINT @Authors*5
+
+--3. 5 r?q?mli ?d?din polindrom olub olmadigini tapin.
+
+DECLARE @num int=12321
+DECLARE @temp int =@num
+DECLARE @poliNum int=0
+
+WHILE @temp!=0
+	BEGIN
+		SET @poliNum=@poliNum*10+@temp%10
+		SET @temp =@temp/10
+	END
+IF @num=@poliNum
+		PRINT 'Number is palindromic'
+ELSE
+		PRINT 'Number is not palindromic'
+	
+--4. Istifad?çinin daxil etdiyi araliqda (m?s 10 v? 30) cüt r?q?ml?rin c?mini t?k r?q?ml?rin
+--hasilini hesablayan proqram yazin.
+
+DECLARE @number int=25
+DECLARE @number_2 int =40
+DECLARE @cut int =0
+DECLARE @tek bigint =1
+
+WHILE @number<@number_2
+	BEGIN
+		IF @number%2=0
+			SET @cut=@cut+@number
+		ELSE
+			SET @tek=@tek*@number
+	SET @number=@number+1
+	END
+PRINT 'Cutlerin cemi: '+CONVERT(nvarchar,@cut)
+PRINT 'Teklerin hasili: '+CONVERT(nvarchar,@tek)
+
+--5. ?d?din faktorialini tapan proqram yazin. (M?s?l?n (! - faktorial isar?sidir), 5! = 1*2*3*4*5)
+
+DECLARE @eded int=8
+DECLARE @factorial int=1
+ 
+WHILE @eded !=0
+BEGIN
+	SET @factorial =@eded*@factorial
+	SET @eded= @eded-1
+END
+ 
+PRINT @factorial
+
+--6. Istifad?çi tam ?d?d daxil edir, bu ?d?din qaliqsiz bölündüyü bütün r?q?ml?ri ekrana
+--çixaran proqram yazin.
+
+DECLARE @tamEded int=28
+DECLARE @count int =1
+
+WHILE @count<=@tamEded
+	BEGIN
+		IF @tamEded%@count=0
+			PRINT @count
+	SET @count=@count+1
+	END
+
+--7. ?d?din üstünü hesablayan proqram yazin (istifad?çi iki ?d?d daxil ed?c?k ?sas v? üst
+--m?s. 2 v? 3 cavab 8 alinmalidir)
+
+DECLARE @ededinOzu int =6
+DECLARE @ededinUstu int=3
+DECLARE @temEded int =1
+DECLARE @tempUst int=@ededinUstu
+
+WHILE @tempUst!=0
+	BEGIN
+		SET @temEded=@temEded*@ededinOzu
+		SET @tempUst = @tempUst-1
+	END
+PRINT CONVERT(nvarchar,@ededinOzu)+' ustu '+ CONVERT(nvarchar, @ededinUstu)+ ' = ' + CONVERT(nvarchar,@temEded)
